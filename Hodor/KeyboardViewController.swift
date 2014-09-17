@@ -13,8 +13,16 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet var nextKeyboardButton: UIButton!
     @IBOutlet var hodorButton: UIButton!
 
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init() {
+        super.init()
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("Hodor is not decodable.")
     }
 
     override func updateViewConstraints() {
@@ -33,7 +41,7 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.sizeToFit()
         self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        self.nextKeyboardButton.titleLabel.font = UIFont(name: "Helvetica", size: 10)
+        self.nextKeyboardButton.titleLabel!.font = UIFont(name: "Helvetica", size: 10)
     
         self.nextKeyboardButton.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
         
@@ -51,7 +59,7 @@ class KeyboardViewController: UIInputViewController {
         self.hodorButton.sizeToFit()
         self.hodorButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        self.hodorButton.titleLabel.font = UIFont(name: "Helvetica", size: 50)
+        self.hodorButton.titleLabel!.font = UIFont(name: "Helvetica", size: 50)
         
         self.hodorButton.addTarget(self, action: "hodor", forControlEvents: .TouchUpInside)
         
